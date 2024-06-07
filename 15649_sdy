@@ -1,0 +1,31 @@
+#include <iostream>
+#define max 9
+using namespace std;
+
+int n, m;
+int arr[max];
+bool check[max];
+
+void DFS(int length) {
+    if (length == m) {
+        for (int i = 0; i < m; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << "\n";
+        return;
+    }
+
+    for (int j = 1; j <= n; j++) {
+        if (!check[j]) {
+            check[j] = true;
+            arr[length] = j;
+            DFS(length + 1);
+            check[j] = false;
+        }
+    }
+}
+
+int main(void) {
+    cin >> n >> m;
+    DFS(0);
+}
